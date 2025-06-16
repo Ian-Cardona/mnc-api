@@ -1,5 +1,7 @@
 import { Schema, model, Document } from "mongoose";
 
+// TODO(models): Look into ZOD
+
 export interface ITestimonial {
   testifier: string;
   title: string;
