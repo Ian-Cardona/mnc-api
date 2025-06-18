@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import logger from './logger.middleware';
+import logger from '../config/logger.config';
 
 export const errorMiddleware = (
   error: unknown,
@@ -7,8 +7,8 @@ export const errorMiddleware = (
   res: Response,
   _next: NextFunction
 ) => {
-  let message = 'An unknown error occurred.';
   let status = 500;
+  let message = 'An unknown error occurred.';
 
   if (error instanceof Error) {
     message = error.message;
@@ -22,9 +22,18 @@ export const errorMiddleware = (
         break;
     }
 
-    logger.error(`[${error.name}] ${error.message}`);
+    logger.error({
+      name: error.name,
+      message,
+      status,
+      stack: error.stack,
+    });
+
+    if (process.env.NODE_ENV !== 'production') {
+      console.error(error.stack);
+    }
   } else {
-    logger.error(`Unknown error: ${JSON.stringify(error)}`);
+    logger.error({ name: 'UnknownError', message: JSON.stringify(error), status });
   }
 
   res.status(status).json({ error: message });
