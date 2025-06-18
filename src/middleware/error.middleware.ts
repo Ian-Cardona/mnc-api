@@ -1,15 +1,31 @@
 import { Request, Response, NextFunction } from 'express';
+import logger from './logger.middleware';
 
-export const errorMiddleware = (error: unknown, _req: Request, res: Response, _next: NextFunction) => {
-    let message = 'An unknown error occurred.';
-    let status = 500;
+export const errorMiddleware = (
+  error: unknown,
+  _req: Request,
+  res: Response,
+  _next: NextFunction
+) => {
+  let message = 'An unknown error occurred.';
+  let status = 500;
 
-    if (error instanceof Error) {
-        message = error.message;
+  if (error instanceof Error) {
+    message = error.message;
 
-        if (error.name === 'ValidationError') status = 400;
-        if (error.name === 'UnauthorizedError') status = 401;        
+    switch (error.name) {
+      case 'ValidationError':
+        status = 400;
+        break;
+      case 'UnauthorizedError':
+        status = 401;
+        break;
     }
 
-    res.status(status).json({ error: message });
+    logger.error(`[${error.name}] ${error.message}`);
+  } else {
+    logger.error(`Unknown error: ${JSON.stringify(error)}`);
+  }
+
+  res.status(status).json({ error: message });
 };

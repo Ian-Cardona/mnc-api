@@ -1,4 +1,4 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model, Document } from 'mongoose';
 
 // TODO(models): Look into ZOD
 
@@ -31,4 +31,4 @@ const homeSchema = new Schema<IHome>({
   testimonials: { type: [testimonialSchema], required: true },
 });
 
-export const Home = model<IHome>("Home", homeSchema);
+export const Home = model<IHome>('Home', homeSchema);

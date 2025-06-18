@@ -1,4 +1,4 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model, Document } from 'mongoose';
 
 // TODO(models): Look into ZOD
 
@@ -46,4 +46,4 @@ const footerSchema = new Schema<IFooter>({
   links: { type: [footerLinkSchema], required: true },
 });
 
-export const Footer = model<IFooter>("Footer", footerSchema);
+export const Footer = model<IFooter>('Footer', footerSchema);
