@@ -1,6 +1,4 @@
-import { Schema, model, Document } from "mongoose";
-
-// TODO(models): Look into ZOD
+import { Schema, model, Document } from 'mongoose';
 
 export interface ITestimonial {
   testifier: string;
@@ -15,7 +13,7 @@ export interface IHome extends Document {
   testimonials: ITestimonial[];
 }
 
-const testimonialSchema = new Schema<ITestimonial>(
+const testimonialDbSchema = new Schema<ITestimonial>(
   {
     testifier: { type: String, required: true },
     title: { type: String, required: true },
@@ -24,11 +22,11 @@ const testimonialSchema = new Schema<ITestimonial>(
   { _id: false }
 );
 
-const homeSchema = new Schema<IHome>({
+const homeDbSchema = new Schema<IHome>({
   cta: { type: String, required: true },
   heroTitle: { type: String, required: true },
   heroContent: { type: String, required: true },
-  testimonials: { type: [testimonialSchema], required: true },
+  testimonials: { type: [testimonialDbSchema], required: true },
 });
 
-export const Home = model<IHome>("Home", homeSchema);
+export const HomeModel = model<IHome>('Home', homeDbSchema);

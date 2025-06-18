@@ -1,1 +1,0 @@
-// TODO(middleware): Add logger middleware

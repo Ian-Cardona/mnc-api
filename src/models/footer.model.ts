@@ -1,26 +1,7 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model, Document } from 'mongoose';
+import { IFooter, IFooterLink, ISocial } from '../types/footer.types';
 
-// TODO(models): Look into ZOD
-
-export type Platform = 'facebook' | 'instagram' | 'linkedin';
-
-export interface ISocial {
-  platform: Platform;
-  url: string;
-}
-
-export interface IFooterLink {
-  label: string;
-  path: string;
-  external?: boolean;
-}
-
-export interface IFooter extends Document {
-  copyright: string;
-  address: string;
-  socials: ISocial[];
-  links: IFooterLink[];
-}
+export interface IFooterDocument extends IFooter, Document {}
 
 const socialSchema = new Schema<ISocial>(
   {
@@ -30,7 +11,7 @@ const socialSchema = new Schema<ISocial>(
   { _id: false }
 );
 
-const footerLinkSchema = new Schema<IFooterLink>(
+const footerLinkDbSchema = new Schema<IFooterLink>(
   {
     label: { type: String, required: true },
     path: { type: String, required: true },
@@ -39,11 +20,11 @@ const footerLinkSchema = new Schema<IFooterLink>(
   { _id: false }
 );
 
-const footerSchema = new Schema<IFooter>({
+const footerDbSchema = new Schema<IFooterDocument>({
   copyright: { type: String, required: true },
   address: { type: String, required: true },
   socials: { type: [socialSchema], required: true },
-  links: { type: [footerLinkSchema], required: true },
+  links: { type: [footerLinkDbSchema], required: true },
 });
 
-export const Footer = model<IFooter>("Footer", footerSchema);
+export const FooterModel = model<IFooterDocument>('Footer', footerDbSchema);
