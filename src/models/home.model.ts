@@ -1,17 +1,7 @@
 import { Schema, model, Document } from 'mongoose';
+import { IHome, ITestimonial } from '../types/home.types';
 
-export interface ITestimonial {
-  testifier: string;
-  title: string;
-  message: string;
-}
-
-export interface IHome extends Document {
-  cta: string;
-  heroTitle: string;
-  heroContent: string;
-  testimonials: ITestimonial[];
-}
+export interface IHomeDocument extends IHome ,Document {};
 
 const testimonialDbSchema = new Schema<ITestimonial>(
   {
@@ -22,11 +12,11 @@ const testimonialDbSchema = new Schema<ITestimonial>(
   { _id: false }
 );
 
-const homeDbSchema = new Schema<IHome>({
+const homeDbSchema = new Schema<IHomeDocument>({
   cta: { type: String, required: true },
   heroTitle: { type: String, required: true },
   heroContent: { type: String, required: true },
   testimonials: { type: [testimonialDbSchema], required: true },
 });
 
-export const HomeModel = model<IHome>('Home', homeDbSchema);
+export const HomeModel = model<IHomeDocument>('Home', homeDbSchema);

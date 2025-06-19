@@ -14,3 +14,5 @@ const homeZodSchema = z.object({
 });
 
 export default homeZodSchema;
+
+// TODO: Use validations now

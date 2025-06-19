@@ -21,3 +21,5 @@ export const footerZodSchema = z.object({
 
 
 export default footerZodSchema;
+
+// TODO: Use validations now
