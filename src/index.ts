@@ -2,8 +2,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import express from 'express';
-import homeRouter from './routes/home';
-import footerRouter from './routes/footer';
+import homeRouter from './routes/home.route';
+import footerRouter from './routes/footer.route';
 import { errorMiddleware } from './middleware/error.middleware';
 import { requestLogger } from './middleware/request_logger.middleware';
 
