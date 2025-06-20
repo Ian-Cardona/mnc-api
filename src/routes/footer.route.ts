@@ -1,9 +1,8 @@
 import express from 'express';
-import { getFooter } from '../controllers/footer.controller';
+import footerController from '../controllers/footer.controller';
 
 const router = express.Router();
 
-// TODO: Implement actual CRUD
-router.get('/', getFooter);
+router.get('/', footerController.fetchFooter);
 
 export default router;

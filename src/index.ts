@@ -13,8 +13,8 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(requestLogger);
 
-app.use('/home', homeRouter);
-app.use('/footer', footerRouter);
+app.use('/api/home', homeRouter);
+app.use('/api/footer', footerRouter);
 
 app.get('/', (_req, res) => {
   res.send('API is running.');

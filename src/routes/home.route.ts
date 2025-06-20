@@ -1,9 +1,8 @@
 import express from 'express';
-import { getHome } from '../controllers/home.controller';
+import homeController from '../controllers/home.controller';
 
 const router = express.Router();
 
-// TODO: Implement actual CRUD
-router.get('/', getHome);
+router.get('/', homeController.fetchHome);
 
 export default router;
