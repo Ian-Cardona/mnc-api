@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
-dotenv.config();
+const envFile = `.env.${process.env.NODE_ENV ?? 'development'}`;
+dotenv.config({ path: envFile });
 
 import express from 'express';
 import homeRouter from './routes/home.route';
@@ -8,6 +9,8 @@ import { errorMiddleware } from './middleware/error.middleware';
 import { requestLogger } from './middleware/request_logger.middleware';
 import helmet from 'helmet';
 import cors from 'cors';
+import { connectDB } from './config/db.config';
+import logger from './config/logger.config';
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
@@ -34,9 +37,17 @@ app.use((_req, res) => {
 
 app.use(errorMiddleware);
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-}).on('error', (err) => {
-  console.error('Failed to start server:', err);
-  process.exit(1);
-});
+// Start server after DB connection
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      logger.info(`Server listening on port ${PORT}`);
+    }).on('error', (err: Error) => {
+      logger.error(`Server error: ${err.message}`);
+      process.exit(1);
+    });
+  })
+  .catch((error: Error) => {
+    logger.error(`Failed to initialize: ${error.message}`);
+    process.exit(1);
+  });

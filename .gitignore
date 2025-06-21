@@ -6,6 +6,8 @@ build/
 # === Env & secrets ===
 .env
 .env.*.local
+.env.development
+.env.test
 
 # === Logs ===
 logs/
@@ -34,6 +36,7 @@ coverage/
 *.local
 *.cache/
 .cache/
+*.tgz
 
 # === Lint & format ===
 .eslintcache
