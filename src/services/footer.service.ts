@@ -7,6 +7,13 @@ const getFooter = async (): Promise<IFooter | null> => {
   return footer;
 };
 
+const addFooter = async (data: IFooter): Promise<IFooter | null> => {
+  const newFooter = await FooterModel.create(data);
+  return newFooter;
+};
+
+
 export default {
-  getFooter
+  getFooter,
+  addFooter
 };
