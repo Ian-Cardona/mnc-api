@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import logger from '../config/logger.config';
 
-const MONGO_URI = process.env.MONGODB_URI || 'N/A';
+const MONGO_URI = process.env.MONGODB_URI ?? 'N/A';
 
 export const connectDB = async (): Promise<void> => {
   try {

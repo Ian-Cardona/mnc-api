@@ -1,5 +1,6 @@
-import { Schema, model, Document } from 'mongoose';
-import { IFooter, IFooterLink, ISocial } from '../types/footer.types';
+import type { Document } from 'mongoose';
+import { Schema, model } from 'mongoose';
+import type { IFooter, IFooterLink, ISocial } from '../types/footer.types';
 
 export interface IFooterDocument extends IFooter, Document {}
 
@@ -8,7 +9,7 @@ const socialSchema = new Schema<ISocial>(
     platform: { type: String, required: true },
     url: { type: String, required: true },
   },
-  { _id: false }
+  { _id: false },
 );
 
 const footerLinkDbSchema = new Schema<IFooterLink>(
@@ -17,7 +18,7 @@ const footerLinkDbSchema = new Schema<IFooterLink>(
     path: { type: String, required: true },
     external: { type: Boolean, default: false },
   },
-  { _id: false }
+  { _id: false },
 );
 
 const footerDbSchema = new Schema<IFooterDocument>({

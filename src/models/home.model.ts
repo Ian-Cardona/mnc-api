@@ -1,5 +1,6 @@
-import { Schema, model, Document } from 'mongoose';
-import { IHome, ITestimonial } from '../types/home.types';
+import type { Document } from 'mongoose';
+import { Schema, model } from 'mongoose';
+import type { IHome, ITestimonial } from '../types/home.types';
 
 export interface IHomeDocument extends IHome ,Document {};
 
@@ -9,7 +10,7 @@ const testimonialDbSchema = new Schema<ITestimonial>(
     title: { type: String, required: true },
     message: { type: String, required: true },
   },
-  { _id: false }
+  { _id: false },
 );
 
 const homeDbSchema = new Schema<IHomeDocument>({
