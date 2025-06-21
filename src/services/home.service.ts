@@ -6,6 +6,11 @@ const getHome = async (): Promise<IHome | null> => {
   return home;
 };
 
+// const postHome = async (): Promise<IHome | null> => {
+//   const home = await HomeModel.findOne({});
+//   return home;
+// };
+
 export default {
   getHome
 };

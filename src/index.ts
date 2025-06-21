@@ -16,7 +16,7 @@ app.use(requestLogger);
 app.use('/api/home', homeRouter);
 app.use('/api/footer', footerRouter);
 
-app.get('/', (_req, res) => {
+app.get('/api', (_req, res) => {
   res.send('API is running.');
 });
 
