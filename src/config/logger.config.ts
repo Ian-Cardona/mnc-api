@@ -6,7 +6,7 @@ const logger = winston.createLogger({
     winston.format.timestamp(),
     winston.format.printf(({ level, message, timestamp }) => {
       return `[${timestamp}] ${level.toUpperCase()}: ${message}`;
-    })
+    }),
   ),
   defaultMeta: { service: 'api-service' },
   transports: [

@@ -5,6 +5,10 @@ import footerZodSchema from '../validations/footer.validation';
 
 const router = express.Router();
 
-router.get('/', validate(footerZodSchema) ,footerController.fetchFooter);
+router.get('/' ,footerController.fetchFooter);
+
+router.post('/', validate(footerZodSchema) ,footerController.createFooter);
+
+router.put('/', validate(footerZodSchema) ,footerController.updateFooter);
 
 export default router;

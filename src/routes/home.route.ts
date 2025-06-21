@@ -5,6 +5,10 @@ import homeZodSchema from '../validations/home.validation';
 
 const router = express.Router();
 
-router.get('/', validate(homeZodSchema), homeController.fetchHome);
+router.get('/', homeController.fetchHome);
+
+router.post('/', validate(homeZodSchema), homeController.createHome);
+
+router.put('/', validate(homeZodSchema), homeController.updateHome);
 
 export default router;

@@ -3,7 +3,7 @@ import { platformEnum } from '../types/footer.types';
 
 export const socialZodSchema = z.object({
   platform: platformEnum,
-  url: z.string()
+  url: z.string(),
 });
 
 export const footerLinkZodSchema = z.object({
