@@ -13,11 +13,27 @@ const testimonialDbSchema = new Schema<ITestimonial>(
   { _id: false },
 );
 
+const servicesOfferedItemDbSchema = new Schema(
+  {
+    description: { type: String, required: true },
+  },
+  { _id: false },
+);
+
+const servicesOfferedDbSchema = new Schema(
+  {
+    title: { type: String, required: true },
+    items: { type: [servicesOfferedItemDbSchema], required: true },
+  },
+  { _id: false },
+);
+
 const homeDbSchema = new Schema<IHomeDocument>({
   cta: { type: String, required: true },
   heroTitle: { type: String, required: true },
   heroContent: { type: String, required: true },
   testimonials: { type: [testimonialDbSchema], required: true },
+  services: { type: [servicesOfferedDbSchema], required: true },
 });
 
 export const HomeModel = model<IHomeDocument>('Home', homeDbSchema);

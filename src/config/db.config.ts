@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import logger from '../config/logger.config';
 
-const MONGO_URI = process.env.MONGODB_URI ?? 'N/A';
+const MONGO_URI = process.env.MONGODB_URI ?? '';
 
 export const connectDB = async (): Promise<void> => {
   try {
@@ -9,7 +9,8 @@ export const connectDB = async (): Promise<void> => {
     await mongoose.connect(MONGO_URI);
     logger.info('Connected to MongoDB');
   } catch (error) {
-    logger.error(`MongoDB connection error: ${(error as Error).message}`);
-    process.exit(1);
+    const err = error as Error;
+    logger.error(`MongoDB connection error: ${err.message}`);
+    throw err;
   }
 };

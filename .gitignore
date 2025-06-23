@@ -1,47 +1,35 @@
-# === Node.js core ===
+# === Node.js ===
 node_modules/
 dist/
 build/
 
-# === Env & secrets ===
-.env
-.env.*.local
+# === Env ===
+.env*
+!.env.example
 
 # === Logs ===
 logs/
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
-# === OS-specific ===
+# === OS files ===
 .DS_Store
 Thumbs.db
 
-# === IDE-specific ===
+# === IDEs ===
 .vscode/
 .idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
 
 # === TypeScript ===
 *.tsbuildinfo
 
 # === Misc ===
 coverage/
-*.local
-*.cache/
 .cache/
+*.tgz
 
-# === Lint & format ===
+# === Lint ===
 .eslintcache
-.prettiercache
-
-# === Testing ===
-jest.config.js
-coverage/
 
 # === Git ===
 *.orig
