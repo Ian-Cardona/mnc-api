@@ -32,6 +32,36 @@ const seedHome = async () => {
           message: 'Services are complete and polished for my needs. <3',
         },
       ],
+      services: [
+        {
+          title: 'Business Processing',
+          items: [
+            { description: 'Monthly bookkeeping and reconciliation' },
+            { description: 'Financial statement preparation' },
+            { description: 'Tax filing and compliance' },
+            { description: 'Tax filing and compliance' },
+            { description: 'Tax filing and compliance' },
+          ],
+        },
+        {
+          title: 'Business Registration',
+          items: [
+            { description: 'Tax filing and compliance' },
+            { description: 'Tax filing and compliance' },
+            { description: 'Tax filing and compliance' },
+            { description: 'Tax filing and compliance' },
+          ],
+        },
+        {
+          title: 'HR & Accounting Services',
+          items: [
+            { description: 'Tax filing and compliance' },
+            { description: 'Tax filing and compliance' },
+            { description: 'Tax filing and compliance' },
+            { description: 'Tax filing and compliance' },
+          ],
+        },
+      ],
     });
 
     await home.save();
