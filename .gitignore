@@ -33,3 +33,7 @@ coverage/
 
 # === Git ===
 *.orig
+
+# dotenv environment files
+.env
+.env.test

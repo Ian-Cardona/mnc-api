@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import { HomeModel } from '../models/home.model';
 
-dotenv.config({ path: '.env.development' });
+dotenv.config();
 
 const seedHome = async () => {
   try {
@@ -38,27 +38,27 @@ const seedHome = async () => {
           items: [
             { description: 'Monthly bookkeeping and reconciliation' },
             { description: 'Financial statement preparation' },
-            { description: 'Tax filing and compliance' },
-            { description: 'Tax filing and compliance' },
-            { description: 'Tax filing and compliance' },
+            { description: 'Payroll processing and management' },
+            { description: 'Accounts receivable and payable tracking' },
+            { description: 'Bank reconciliation' },
           ],
         },
         {
           title: 'Business Registration',
           items: [
-            { description: 'Tax filing and compliance' },
-            { description: 'Tax filing and compliance' },
-            { description: 'Tax filing and compliance' },
-            { description: 'Tax filing and compliance' },
+            { description: 'DTI/SEC registration assistance' },
+            { description: 'BIR registration and compliance' },
+            { description: 'Business permit processing' },
+            { description: 'SSS, PhilHealth, and Pag-IBIG registration' },
           ],
         },
         {
           title: 'HR & Accounting Services',
           items: [
-            { description: 'Tax filing and compliance' },
-            { description: 'Tax filing and compliance' },
-            { description: 'Tax filing and compliance' },
-            { description: 'Tax filing and compliance' },
+            { description: 'Payroll computation and remittance' },
+            { description: 'Preparation of financial reports' },
+            { description: 'Employee benefits administration' },
+            { description: 'HR compliance and documentation' },
           ],
         },
       ],
