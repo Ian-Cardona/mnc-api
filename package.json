@@ -14,7 +14,12 @@
     "test:coverage": "vitest run --coverage",
     "seed": "ts-node src/scripts/seed.ts"
   },
-  "keywords": ["api", "express", "typescript", "mongodb"],
+  "keywords": [
+    "api",
+    "express",
+    "typescript",
+    "mongodb"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -31,7 +36,7 @@
     "@stylistic/eslint-plugin": "^4.4.1",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
-    "@types/node": "^24.0.1",
+    "@types/node": "^24.0.3",
     "eslint": "^9.29.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3",
