@@ -98,9 +98,9 @@ const seedNavBar = async () => {
       { label: 'Contact', path: '/contact' },
     ],
     cta: {
-      label: 'Get Started',
-      url: '/contact',
-      external: false,
+      label: 'Check Us Out',
+      url: 'https://www.facebook.com/mncbsi',
+      external: true,
     },
   });
 
