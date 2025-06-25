@@ -1,8 +1,14 @@
 import { z } from 'zod';
 
+const heroZodSchema = z.object({
+  title: z.string(),
+  subtitle: z.string(),
+  cta: z.string(),
+});
+
 const testimonialZodSchema = z.object({
   testifier: z.string(),
-  title: z.string(),
+  company: z.string(),
   message: z.string(),
 });
 
@@ -16,10 +22,12 @@ const servicesOfferedZodSchema = z.object({
 });
 
 const homeZodSchema = z.object({
-  cta: z.string(),
-  heroTitle: z.string(),
-  heroContent: z.string(),
-  testimonials: z.array(testimonialZodSchema),
+  hero: heroZodSchema,
+  servicesHeader: z.string(),
+  servicesDescription: z.string(),
+  testimonialsHeader: z.string(),
+  testimonialsDescription: z.string(),
+  testimonials: z.array(testimonialZodSchema).min(1, 'At least one testimonial is required'),
   services: z.array(servicesOfferedZodSchema),
 });
 

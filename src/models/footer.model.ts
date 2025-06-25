@@ -1,10 +1,19 @@
 import type { Document } from 'mongoose';
 import { Schema, model } from 'mongoose';
-import type { IFooter, IFooterLink, ISocial } from '../types/footer.types';
+import type { IFooter, IFooterForm, IFooterInfo, IFooterSocial } from '../types/footer.types';
+import { navBarLinkSchema } from './navbar.model';
 
 export interface IFooterDocument extends IFooter, Document {}
 
-const socialSchema = new Schema<ISocial>(
+const formSchema = new Schema<IFooterForm>(
+  {
+    header: { type: String, required: true },
+    subheader: { type: String, required: true },
+  },
+  { _id: false },
+);
+
+const socialSchema = new Schema<IFooterSocial>(
   {
     platform: { type: String, required: true },
     url: { type: String, required: true },
@@ -12,20 +21,21 @@ const socialSchema = new Schema<ISocial>(
   { _id: false },
 );
 
-const footerLinkDbSchema = new Schema<IFooterLink>(
+const infoSchema = new Schema<IFooterInfo>(
   {
-    label: { type: String, required: true },
-    path: { type: String, required: true },
-    external: { type: Boolean, default: false },
+    address: { type: String, required: true },
+    contact: { type: String, required: true },
+    email: { type: String, required: true },
   },
   { _id: false },
 );
 
 const footerDbSchema = new Schema<IFooterDocument>({
-  copyright: { type: String, required: true },
-  address: { type: String, required: true },
+  form: { type: formSchema, required: true },
   socials: { type: [socialSchema], required: true },
-  links: { type: [footerLinkDbSchema], required: true },
+  info: { type: infoSchema, required: true },
+  copyright: { type: String, required: true },
+  links: { type: [navBarLinkSchema], required: true },
 });
 
 export const FooterModel = model<IFooterDocument>('Footer', footerDbSchema);
