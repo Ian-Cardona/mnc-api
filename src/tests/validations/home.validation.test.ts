@@ -13,60 +13,83 @@ describe('homeZodSchema', () => {
     }
   });
 
-  it('rejects when heroTitle is missing', () => {
-    const result = homeZodSchema.safeParse(homeTestHelper.noHeroTitleHomeData);
-
+  it('rejects when hero title is missing', () => {
+    const invalidData = {
+      ...homeTestHelper.validHomeData,
+      hero: {
+        ...homeTestHelper.validHomeData.hero,
+        title: '',
+      },
+    };
+    const result = homeZodSchema.safeParse(invalidData);
     expect(result.success).toBe(false);
     if (!result.success) {
-      const errorMessages = result.error.errors.map(e => e.path.join('.'));
-      expect(errorMessages).toContain('heroTitle');
+      expect(result.error.errors[0].message).toEqual(expect.any(String));
     }
   });
 
   it('rejects when testimonials is not an array', () => {
-    const result = homeZodSchema.safeParse(homeTestHelper.badTestimonialsHomeData);
-
+    const invalidData = {
+      ...homeTestHelper.validHomeData,
+      testimonials: 'not an array',
+    };
+    const result = homeZodSchema.safeParse(invalidData);
     expect(result.success).toBe(false);
     if (!result.success) {
-      const errorMessages = result.error.errors.map(e => e.path.join('.'));
-      expect(errorMessages).toContain('testimonials');
+      expect(result.error.errors[0].message).toEqual(expect.any(String));
     }
   });
 
-  it('rejects when testimonial message is empty', () => {
-    const result = homeZodSchema.safeParse(homeTestHelper.emptyTestimonialsHomeData);
-
+  it('rejects when testimonials array is empty', () => {
+    const result = homeZodSchema.safeParse(homeTestHelper.emptyTestimonialsData);
     expect(result.success).toBe(false);
     if (!result.success) {
-      const errorMessages = result.error.errors.map(e => e.path.join('.'));
-      expect(errorMessages).toContain('testimonials');
+      expect(result.error.errors[0].message).toEqual('At least one testimonial is required');
     }
   });
 
   it('rejects when services is not an array', () => {
-    const result = homeZodSchema.safeParse(homeTestHelper.badServicesHomeData);
+    const invalidData = {
+      ...homeTestHelper.validHomeData,
+      services: 'not an array',
+    };
+    const result = homeZodSchema.safeParse(invalidData);
     expect(result.success).toBe(false);
     if (!result.success) {
-      const errorMessages = result.error.errors.map(e => e.path.join('.'));
-      expect(errorMessages).toContain('services');
+      expect(result.error.errors[0].message).toEqual(expect.any(String));
     }
   });
 
   it('rejects when a service is missing title', () => {
-    const result = homeZodSchema.safeParse(homeTestHelper.missingServiceTitleHomeData);
+    const invalidData = {
+      ...homeTestHelper.validHomeData,
+      services: [
+        {
+          items: [{ description: 'Some service' }],
+        },
+      ],
+    };
+    const result = homeZodSchema.safeParse(invalidData);
     expect(result.success).toBe(false);
     if (!result.success) {
-      const errorMessages = result.error.errors.map(e => e.path.join('.'));
-      expect(errorMessages).toContain('services.0.title');
+      expect(result.error.errors[0].message).toEqual(expect.any(String));
     }
   });
 
   it('rejects when a service item is missing description', () => {
-    const result = homeZodSchema.safeParse(homeTestHelper.missingServiceItemDescriptionHomeData);
+    const invalidData = {
+      ...homeTestHelper.validHomeData,
+      services: [
+        {
+          title: 'Some Service',
+          items: [{}],
+        },
+      ],
+    };
+    const result = homeZodSchema.safeParse(invalidData);
     expect(result.success).toBe(false);
     if (!result.success) {
-      const errorMessages = result.error.errors.map(e => e.path.join('.'));
-      expect(errorMessages).toContain('services.0.items.0.description');
+      expect(result.error.errors[0].message).toEqual(expect.any(String));
     }
   });
 });

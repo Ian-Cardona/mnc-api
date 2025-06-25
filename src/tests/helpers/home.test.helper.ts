@@ -1,3 +1,5 @@
+import type { IHome } from '../../types/home.types';
+
 const baseHomeData = {
   cta: 'Sample CTA',
   heroTitle: 'Sample Hero Title',
@@ -50,8 +52,91 @@ const missingServiceTitleHomeData = { ...validHomeData, services: [{ items: [{ d
 
 const missingServiceItemDescriptionHomeData = { ...validHomeData, services: [{ title: 'Bookkeeping', items: [{ }] }] };
 
-export default {
-  validHomeData,
+const homeTestHelper = {
+  validHomeData: {
+    hero: {
+      title: 'Professional Bookkeeping Services',
+      subtitle: 'Your trusted partner for financial success',
+      cta: 'Get Started Today',
+    },
+    servicesHeader: 'Our Services',
+    servicesDescription: 'Comprehensive bookkeeping solutions for your business',
+    testimonialsHeader: 'What Our Clients Say',
+    testimonialsDescription: 'Trusted by businesses across the Philippines',
+    testimonials: [
+      {
+        testifier: 'John Doe',
+        company: 'ABC Company',
+        message: 'Excellent service and attention to detail.',
+      },
+      {
+        testifier: 'Jane Smith',
+        company: 'XYZ Corp',
+        message: 'Professional and reliable bookkeeping services.',
+      },
+    ],
+    services: [
+      {
+        title: 'Bookkeeping',
+        items: [
+          { description: 'General ledger maintenance' },
+          { description: 'Financial statement preparation' },
+        ],
+      },
+      {
+        title: 'Tax Preparation',
+        items: [
+          { description: 'Income tax returns' },
+          { description: 'VAT returns' },
+        ],
+      },
+    ],
+  } as IHome,
+
+  invalidHomeData: {
+    hero: {
+      title: '',
+      subtitle: '',
+      cta: '',
+    },
+    servicesHeader: '',
+    servicesDescription: '',
+    testimonialsHeader: '',
+    testimonialsDescription: '',
+    testimonials: [],
+    services: [],
+  },
+
+  partialUpdateData: {
+    hero: {
+      title: 'Updated Hero Title',
+      subtitle: 'Updated Hero Subtitle',
+      cta: 'Updated CTA',
+    },
+  },
+
+  emptyTestimonialsData: {
+    hero: {
+      title: 'Professional Bookkeeping Services',
+      subtitle: 'Your trusted partner for financial success',
+      cta: 'Get Started Today',
+    },
+    servicesHeader: 'Our Services',
+    servicesDescription: 'Comprehensive bookkeeping solutions for your business',
+    testimonialsHeader: 'What Our Clients Say',
+    testimonialsDescription: 'Trusted by businesses across the Philippines',
+    testimonials: [],
+    services: [
+      {
+        title: 'Bookkeeping',
+        items: [
+          { description: 'General ledger maintenance' },
+          { description: 'Financial statement preparation' },
+        ],
+      },
+    ],
+  } as IHome,
+
   noHeroTitleHomeData,
   badTestimonialsHomeData,
   emptyTestimonialsHomeData,
@@ -59,3 +144,5 @@ export default {
   missingServiceTitleHomeData,
   missingServiceItemDescriptionHomeData,
 };
+
+export default homeTestHelper;

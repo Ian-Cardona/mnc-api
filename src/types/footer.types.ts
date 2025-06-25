@@ -1,23 +1,29 @@
 import { z } from 'zod';
+import type { INavBarLink } from './navbar.types';
 
 export const platformEnum = z.enum(['facebook', 'instagram', 'linkedin']);
-
 export type Platform = z.infer<typeof platformEnum>;
 
-export interface ISocial {
+export interface IFooterForm {
+  header: string;
+  subheader: string;
+}
+
+export interface IFooterSocial {
   platform: Platform;
   url: string;
 }
 
-export interface IFooterLink {
-  label: string;
-  path: string;
-  external?: boolean;
+export interface IFooterInfo {
+  address: string;
+  contact: string;
+  email: string;
 }
 
 export interface IFooter {
+  form: IFooterForm;
+  socials: IFooterSocial[];
+  links: INavBarLink[];
+  info: IFooterInfo;
   copyright: string;
-  address: string;
-  socials: ISocial[];
-  links: IFooterLink[];
 }
