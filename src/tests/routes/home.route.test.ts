@@ -60,7 +60,7 @@ describe('Home Routes', () => {
       expect(response.body).toMatchObject({
         error: {
           name: 'Error',
-          message: expect.any(String),
+          message: expect.any(String) as string,
           status: 500,
         },
       });
@@ -106,7 +106,7 @@ describe('Home Routes', () => {
       expect(response.body).toMatchObject({
         error: {
           name: 'ZodError',
-          message: expect.any(String),
+          message: expect.any(String) as string,
           status: 400,
         },
       });
@@ -124,7 +124,7 @@ describe('Home Routes', () => {
       expect(response.body).toMatchObject({
         error: {
           name: 'ZodError',
-          message: expect.any(String),
+          message: expect.any(String) as string,
           status: 400,
         },
       });
@@ -144,7 +144,7 @@ describe('Home Routes', () => {
       expect(response.body).toMatchObject({
         error: {
           name: 'Error',
-          message: expect.any(String),
+          message: expect.any(String) as string,
           status: 500,
         },
       });
@@ -182,7 +182,7 @@ describe('Home Routes', () => {
       expect(response.body).toMatchObject({
         error: {
           name: 'ZodError',
-          message: expect.any(String),
+          message: expect.any(String) as string,
           status: 400,
         },
       });
@@ -220,7 +220,7 @@ describe('Home Routes', () => {
       expect(response.body).toMatchObject({
         error: {
           name: 'Error',
-          message: expect.any(String),
+          message: expect.any(String) as string,
           status: 400,
         },
       });
@@ -244,7 +244,7 @@ describe('Home Routes', () => {
       expect(response.body).toMatchObject({
         error: {
           name: 'ZodError',
-          message: expect.any(String),
+          message: expect.any(String) as string,
           status: 400,
         },
       });
@@ -270,7 +270,7 @@ describe('Home Routes', () => {
       expect(response.body).toMatchObject({
         error: {
           name: 'Error',
-          message: expect.any(String),
+          message: expect.any(String) as string,
           status: 500,
         },
       });
@@ -297,7 +297,7 @@ describe('Home Routes', () => {
       expect(response.body).toMatchObject({
         error: {
           name: 'Error',
-          message: expect.any(String),
+          message: expect.any(String) as string,
           status: 500,
         },
       });
@@ -318,11 +318,11 @@ describe('Home Routes', () => {
       expect(response.body).toMatchObject({
         error: {
           name: 'ZodError',
-          message: expect.any(String),
+          message: expect.any(String) as string,
           status: 400,
         },
       });
       expect(homeService.updateHome).not.toHaveBeenCalled();
     });
   });
-}); 
+});
