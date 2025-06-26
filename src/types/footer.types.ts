@@ -27,3 +27,9 @@ export interface IFooter {
   info: IFooterInfo;
   copyright: string;
 }
+
+
+// TODO: Add validation for the form input
+export interface IFooterFormInput {
+  to: string
+};
