@@ -1,4 +1,4 @@
-import type { IFooter } from '../../types/footer.types';
+import type { IFooter, IFooterFormInput } from '../../types/footer.types';
 
 const baseFooterData = {
   form: {
@@ -68,6 +68,12 @@ const invalidEmailFooterData: IFooter = {
   links: validFooterData.links,
 };
 
+const validEmailData: IFooterFormInput = {
+  emailer: 'test@example.com',
+  contact: '1234567890',
+  message: 'This is a test message',
+};
+
 export default {
   validFooterData,
   noInfoFooterData,
@@ -76,4 +82,5 @@ export default {
   invalidSocialPlatformFooterData,
   missingFormFieldsFooterData,
   invalidEmailFooterData,
+  validEmailData,
 };

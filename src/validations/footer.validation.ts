@@ -26,4 +26,10 @@ export const footerZodSchema = z.object({
   links: z.array(navbarLinkZodSchema),
 });
 
+export const formInputZodSchema = z.object({
+  emailer: z.string(),
+  contact: z.string(),
+  message: z.string(),
+});
+
 export default footerZodSchema;

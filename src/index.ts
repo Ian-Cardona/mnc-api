@@ -38,7 +38,6 @@ app.use((_req, res) => {
 
 app.use(errorMiddleware);
 
-// Start server after DB connection
 connectDB()
   .then(() => {
     app.listen(PORT, () => {

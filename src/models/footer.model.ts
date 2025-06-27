@@ -1,6 +1,6 @@
 import type { Document } from 'mongoose';
 import { Schema, model } from 'mongoose';
-import type { IFooter, IFooterForm, IFooterInfo, IFooterSocial } from '../types/footer.types';
+import type { IFooter, IFooterForm, IFooterFormInput, IFooterInfo, IFooterSocial } from '../types/footer.types';
 import { navBarLinkSchema } from './navbar.model';
 
 export interface IFooterDocument extends IFooter, Document {}
@@ -38,4 +38,14 @@ const footerDbSchema = new Schema<IFooterDocument>({
   links: { type: [navBarLinkSchema], required: true },
 });
 
+const formInputSchema = new Schema<IFooterFormInput>(
+  {
+    emailer: { type: String, required: true },
+    contact: { type: String, required: true },
+    message: { type: String, required: true },
+  },
+  { _id: false },
+);
+
 export const FooterModel = model<IFooterDocument>('Footer', footerDbSchema);
+export const FormInputModel = model<IFooterFormInput>('FormInput', formInputSchema);
