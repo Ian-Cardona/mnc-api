@@ -4,7 +4,7 @@ import footerController from '../../controllers/footer.controller';
 import footerService from '../../services/footer.service';
 import footerTestHelper from '../helpers/footer.test.helper';
 import { HTTP_STATUS, ERROR_MESSAGES } from '../../constants/http.constants';
-import type { IFooter } from '../../types/footer.types';
+import type { IFooter, IFooterFormInput } from '../../types/footer.types';
 import type { TypedRequestBody } from '../../types/request.types';
 
 // Mock the footer service
@@ -240,6 +240,56 @@ describe('Footer Controller', () => {
       expect(footerService.updateFooter).toHaveBeenCalledWith(updateData);
       expect(mockResponse.status).toHaveBeenCalledWith(HTTP_STATUS.OK);
       expect(mockResponse.json).toHaveBeenCalledWith({ data: updatedFooter });
+    });
+  });
+
+  describe('addEmail', () => {
+    it('should add email successfully', async () => {
+      const emailData = footerTestHelper.validEmailData;
+
+      mockRequest.body = emailData;
+      vi.mocked(footerService.addEmail).mockResolvedValue();
+
+      await footerController.addEmail(mockRequest as TypedRequestBody<IFooterFormInput>, mockResponse as Response, mockNext);
+
+      expect(footerService.addEmail).toHaveBeenCalledWith(emailData);
+      expect(mockResponse.status).toHaveBeenCalledWith(HTTP_STATUS.CREATED);
+      expect(mockResponse.json).toHaveBeenCalledWith({ data: emailData });
+      expect(mockNext).not.toHaveBeenCalled();
+    });
+
+    it('should handle service errors', async () => {
+      const emailData = footerTestHelper.validEmailData;
+      const error = new Error('Service error');
+
+      mockRequest.body = emailData;
+      vi.mocked(footerService.addEmail).mockRejectedValue(error);
+
+      await footerController.addEmail(mockRequest as TypedRequestBody<IFooterFormInput>, mockResponse as Response, mockNext);
+
+      expect(footerService.addEmail).toHaveBeenCalledWith(emailData);
+      expect(mockNext).toHaveBeenCalledWith(error);
+      expect(mockResponse.status).not.toHaveBeenCalled();
+      expect(mockResponse.json).not.toHaveBeenCalled();
+    });
+
+    it('should handle invalid input data', async () => {
+      const invalidEmailData = {
+        emailer: 'not-an-email',
+        contact: '',
+        message: '',
+      };
+
+      mockRequest.body = invalidEmailData;
+
+      await footerController.addEmail(mockRequest as TypedRequestBody<IFooterFormInput>, mockResponse as Response, mockNext);
+
+      expect(footerService.addEmail).not.toHaveBeenCalled();
+      expect(mockResponse.status).toHaveBeenCalledWith(HTTP_STATUS.BAD_REQUEST);
+      expect(mockResponse.json).toHaveBeenCalledWith({
+        error: ERROR_MESSAGES.INVALID_INPUT,
+      });
+      expect(mockNext).not.toHaveBeenCalled();
     });
   });
 });

@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
 import footerService from '../services/footer.service';
-import type { IFooter } from '../types/footer.types';
+import type { IFooter, IFooterFormInput } from '../types/footer.types';
 import type { TypedRequestBody } from '../types/request.types';
 import { ERROR_MESSAGES, HTTP_STATUS } from '../constants/http.constants';
 
@@ -37,8 +37,18 @@ export const updateFooter = async (req: TypedRequestBody<Partial<IFooter>>, res:
   }
 };
 
+export const addEmail = async (req: TypedRequestBody<IFooterFormInput>, res: Response, next: NextFunction) => {
+  try {
+    const email = await footerService.addEmail(req.body);
+    res.status(HTTP_STATUS.CREATED).json({ data: email });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export default {
   fetchFooter,
   createFooter,
   updateFooter,
+  addEmail,
 };

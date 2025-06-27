@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
+
+
 import nodemailer from 'nodemailer';
 import type { Transporter } from 'nodemailer';
 import type { SentMessageInfo } from 'nodemailer/lib/smtp-transport';
@@ -14,15 +14,21 @@ const transporter = nodemailer.createTransport({
 }) as Transporter;
 
 export const sendEmail = async (options: {
-  to: string;
-  subject: string;
-  text: string;
+  emailer: string;
+  contact: string;
+  message: string;
 }): Promise<SentMessageInfo> => {
+  const text: string = `
+  Emailer: ${options.emailer}
+  Contact: ${options.contact}
+  Message: ${options.message}
+  `;
+
   const mailOptions = {
     from: process.env.GMAIL_USER,
-    to: options.to,
-    subject: options.subject,
-    text: options.text,
+    to: process.env.GMAIL_RECIPIENT,
+    subject: 'New Inquiry for MNC Bookkeeping Services',
+    text: text,
   };
   return (await transporter.sendMail(mailOptions)) as SentMessageInfo;
 };
