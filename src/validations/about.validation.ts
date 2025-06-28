@@ -11,19 +11,12 @@ export const aboutHighlightZodSchema = z.object({
   icon: z.string(),
 });
 
-export const aboutLocationZodSchema = z.object({
-  title: z.string(),
-  address: z.string(),
-});
-
-
 export const aboutTeamMemberZodSchema = z.object({
   id: z.string(),
   title: z.string(),
   description: z.string(),
   icon: z.string(),
   tags: z.array(z.string()),
-  order: z.number(),
 });
 
 export const aboutApproachZodSchema = z.object({
@@ -37,7 +30,6 @@ export const aboutValueZodSchema = z.object({
   title: z.string(),
   description: z.string(),
   icon: z.string(),
-  order: z.number(),
 });
 
 
@@ -45,7 +37,6 @@ export const aboutStatZodSchema = z.object({
   id: z.string(),
   value: z.string(),
   label: z.string(),
-  order: z.number(),
 });
 
 export const aboutStoryZodSchema = z.object({
@@ -54,22 +45,13 @@ export const aboutStoryZodSchema = z.object({
   highlight: aboutHighlightZodSchema.optional(),
 });
 
-export const aboutContactZodSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-  ctaText: z.string(),
-  ctaIcon: z.string(),
-});
-
 export const aboutZodSchema = z.object({
   hero: aboutHeroZodSchema,
   story: aboutStoryZodSchema,
-  location: aboutLocationZodSchema,
   values: z.array(aboutValueZodSchema),
   approach: aboutApproachZodSchema,
   team: z.array(aboutTeamMemberZodSchema),
   stats: z.array(aboutStatZodSchema),
-  contact: aboutContactZodSchema,
 });
 
 export default aboutZodSchema;

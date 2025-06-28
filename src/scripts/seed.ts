@@ -4,6 +4,8 @@ import { HomeModel } from '../models/home.model';
 import { FooterModel } from '../models/footer.model';
 import { NavBarModel } from '../models/navbar.model';
 import { AboutModel } from '../models/about.model';
+import { ServicesModel } from '../models/services.model';
+import { platformEnum } from '../types/footer.types';
 
 dotenv.config();
 
@@ -124,9 +126,9 @@ const seedFooter = async () => {
       email: 'mnc.bookkeeping.servicesph@gmail.com',
     },
     socials: [
-      { platform: 'facebook', url: 'https://www.facebook.com/mncbsi' },
-      { platform: 'instagram', url: 'https://instagram.com/mnc' },
-      { platform: 'linkedin', url: 'https://www.linkedin.com/in/mnc-bookkeeping-services-50419b371/' },
+      { platform: platformEnum.enum.facebook, url: 'https://www.facebook.com/mncbsi' },
+      { platform: platformEnum.enum.instagram, url: 'https://instagram.com/mnc' },
+      { platform: platformEnum.enum.linkedin, url: 'https://www.linkedin.com/in/mnc-bookkeeping-services-50419b371/' },
     ],
     links: [
       { label: 'Services', path: '/services' },
@@ -161,52 +163,42 @@ const seedAbout = async () => {
         icon: 'Target',
       },
     },
-    location: {
-      title: 'Our Office',
-      address: 'No. 56 JB Santos Street, Wawa Tangos, Navotas City, Philippines 1485',
-    },
     values: [
       {
         id: '1',
         title: 'Confidentiality',
         description: 'Maintaining strict confidentiality of client information and business data.',
         icon: 'Lock',
-        order: 1,
       },
       {
         id: '2',
         title: 'Continual Improvement',
         description: 'Continuously enhancing our processes and services to deliver better results.',
         icon: 'TrendingUp',
-        order: 2,
       },
       {
         id: '3',
         title: 'Customer Focus',
         description: 'Putting our clients\' needs first and delivering personalized solutions.',
         icon: 'Heart',
-        order: 3,
       },
       {
         id: '4',
         title: 'Honesty and Integrity',
         description: 'Operating with transparency and ethical practices in all our dealings.',
         icon: 'Shield',
-        order: 4,
       },
       {
         id: '5',
         title: 'Timely Report',
         description: 'Delivering accurate and timely financial reports to support informed decisions.',
         icon: 'Clock',
-        order: 5,
       },
       {
         id: '6',
         title: 'Transparency',
         description: 'Maintaining open communication and clear reporting with our clients.',
         icon: 'Eye',
-        order: 6,
       },
     ],
     approach: {
@@ -219,7 +211,6 @@ const seedAbout = async () => {
           description: 'Our founder brings over 10 years of experience in multinational companies, including roles as Accountant and Finance Manager.',
           icon: 'Users',
           tags: ['10+ Years', 'MBA', 'CPA'],
-          order: 1,
         },
         {
           id: '2',
@@ -227,7 +218,6 @@ const seedAbout = async () => {
           description: 'Comprehensive accounting and consulting services that protect our clients\' interests and optimize their financial operations.',
           icon: 'Award',
           tags: ['Bookkeeping', 'Tax', 'Consulting'],
-          order: 2,
         },
         {
           id: '3',
@@ -235,7 +225,6 @@ const seedAbout = async () => {
           description: 'We demonstrate flexibility and apply an individualized approach to each client, optimizing efficiency according to their business nature.',
           icon: 'Target',
           tags: ['Flexible', 'Tailored', 'Efficient'],
-          order: 3,
         },
       ],
     },
@@ -246,7 +235,6 @@ const seedAbout = async () => {
         description: 'Leading our team with over 10 years of experience in multinational companies, including roles as Accountant and Finance Manager.',
         icon: 'User',
         tags: ['10+ Years', 'MBA', 'Leadership'],
-        order: 1,
       },
       {
         id: '2',
@@ -254,7 +242,6 @@ const seedAbout = async () => {
         description: 'Our team of certified accountants and auditors provides comprehensive financial services with attention to detail.',
         icon: 'Users',
         tags: ['Certified', 'Experienced', 'Professional'],
-        order: 2,
       },
       {
         id: '3',
@@ -262,7 +249,6 @@ const seedAbout = async () => {
         description: 'Dedicated support team ensuring smooth operations and excellent client service delivery.',
         icon: 'Support',
         tags: ['Dedicated', 'Efficient', 'Reliable'],
-        order: 3,
       },
     ],
     stats: [
@@ -270,37 +256,114 @@ const seedAbout = async () => {
         id: '1',
         value: '10+',
         label: 'Years of Experience',
-        order: 1,
       },
       {
         id: '2',
         value: '2019',
         label: 'Company Founded',
-        order: 2,
       },
       {
         id: '3',
         value: '100%',
         label: 'Referral Based',
-        order: 3,
       },
       {
         id: '4',
         value: 'MBA',
         label: 'Educational Background',
-        order: 4,
       },
     ],
-    contact: {
-      title: 'Ready to Work Together?',
-      description: 'Let\'s discuss how we can help optimize your accounting, finances, and tax obligations according to the nature of your business.',
-      ctaText: 'Get In Touch',
-      ctaIcon: 'Mail',
-    },
   });
 
   await about.save();
   console.log('About document seeded successfully.');
+};
+
+const seedServices = async () => {
+  await ServicesModel.deleteMany({});
+  console.log('Existing Services documents removed.');
+
+  const services = new ServicesModel({
+    hero: {
+      title: 'Our Services',
+      subtitle: 'MNC Bookkeeping Services Inc. offers a complete package of services for the accounting and tax advisory needs of any entity.',
+      description: 'We implement a proactive approach by thoroughly reviewing, rather than just processing, all information we work with. Our experts are highly engaged in understanding the needs and requirements of our clients, ensuring efficient and straightforward communication regarding our services.',
+      additionalInfo: 'Our excellence-focused team prioritizes maximum flexibility in meeting your requirements and expectations while saving your valuable time and effort.',
+    },
+    whyChooseUs: [
+      {
+        title: 'Complete Documentation Collection',
+        description: 'We collect all monthly documentation from your company.',
+        icon: 'FileText',
+      },
+      {
+        title: 'Electronic BIR Filing',
+        description: 'We file everything to the Bureau of Internal Revenue (BIR) electronically.',
+        icon: 'Calculator',
+      },
+      {
+        title: 'Accounts Tracking',
+        description: 'We keep track of your accounts payable and receivable.',
+        icon: 'TrendingUp',
+      },
+      {
+        title: 'Legislative Updates',
+        description: 'We keep you updated on important changes in legislation.',
+        icon: 'Shield',
+      },
+      {
+        title: 'Accurate & Prompt Reports',
+        description: 'We ensure accounts and reports are accurate and delivered promptly.',
+        icon: 'CheckCircle',
+      },
+      {
+        title: 'Tax Optimization',
+        description: 'We help reduce your taxes by advising you on maximizing your output and input tax.',
+        icon: 'DollarSign',
+      },
+      {
+        title: 'Business Success Focus',
+        description: 'We are committed to your business success.',
+        icon: 'Users',
+      },
+      {
+        title: 'Prompt Communication',
+        description: 'We respond promptly through email, text messages, or private messages.',
+        icon: 'MessageCircle',
+      },
+    ],
+    services: [
+      {
+        title: 'Accounting',
+        description: 'We provide comprehensive bookkeeping services that comply with accounting procedures and regulations. Our team establishes appropriate accountability and awareness within your management team regarding accounting activities. The more information we gather, the better solutions we can offer for your business. Our accounting services follow national and international regulations, providing you with a complete service cycle for all your accounting operations.',
+        icon: 'Calculator',
+        image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+        color: 'from-blue-500 via-blue-600 to-blue-700',
+      },
+      {
+        title: 'Payroll',
+        description: 'In today\'s business world, successful and growing companies face the challenge of managing constantly increasing workforce needs. These needs bring more legislative regulations and higher demand for expert payroll professionals. As payroll is essential to every organization, we relieve you of the burden of navigating countless legislative documents while managing part-time or full-time employees\' payroll, benefits, employee taxation, and related issues. This allows you more time to expand your business and increase profitability.',
+        icon: 'Users',
+        image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+        color: 'from-emerald-500 via-emerald-600 to-emerald-700',
+      },
+      {
+        title: 'Tax Return',
+        description: 'Every local organization and individual is required to declare their revenue (income) by submitting an annual tax return along with the respective applications and attachments. MNC Bookkeeping Services Inc. provides comprehensive services for the preparation and submission of tax returns for companies and individuals. We handle the entire process from collecting required documentation to computing your quarterly and annual returns and submitting them electronically on or before the due date.',
+        icon: 'FileText',
+        image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+        color: 'from-purple-500 via-purple-600 to-purple-700',
+      },
+    ],
+    cta: {
+      title: 'Ready to Get Started?',
+      description: 'Let us handle your accounting, payroll, and tax needs so you can focus on growing your business.',
+      buttonText: 'Get Started',
+    },
+  });
+
+  await services.save();
+  console.log('Services document seeded successfully.');
 };
 
 const seed = async () => {
@@ -315,6 +378,7 @@ const seed = async () => {
     await seedNavBar();
     await seedFooter();
     await seedAbout();
+    await seedServices();
 
   } catch (error) {
     console.error('Seeding failed:', error);

@@ -37,10 +37,17 @@ export const updateFooter = async (req: TypedRequestBody<Partial<IFooter>>, res:
   }
 };
 
-export const addEmail = async (req: TypedRequestBody<IFooterFormInput>, res: Response, next: NextFunction) => {
+export const createEmail = async (req: TypedRequestBody<IFooterFormInput>, res: Response, next: NextFunction) => {
   try {
-    const email = await footerService.addEmail(req.body);
-    res.status(HTTP_STATUS.CREATED).json({ data: email });
+    if (!req.body.emailer || !req.body.contact || !req.body.message) {
+      res.status(HTTP_STATUS.BAD_REQUEST).json({
+        error: ERROR_MESSAGES.INVALID_INPUT,
+      });
+      return;
+    }
+
+    await footerService.addEmail(req.body);
+    res.status(HTTP_STATUS.CREATED).json({ data: req.body });
   } catch (error) {
     next(error);
   }
@@ -50,5 +57,5 @@ export default {
   fetchFooter,
   createFooter,
   updateFooter,
-  addEmail,
+  createEmail,
 };

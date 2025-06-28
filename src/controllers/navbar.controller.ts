@@ -1,5 +1,5 @@
 import type { NextFunction, Request, Response } from 'express';
-import navbarService from '../services/navbar.services';
+import navbarService from '../services/navbar.service';
 import { ERROR_MESSAGES, HTTP_STATUS } from '../constants/http.constants';
 import type { TypedRequestBody } from '../types/request.types';
 import type { INavBar } from '../types/navbar.types';

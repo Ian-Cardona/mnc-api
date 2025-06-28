@@ -11,6 +11,6 @@ router.post('/', validate(footerZodSchema) ,footerController.createFooter);
 
 router.put('/', validate(footerZodSchema) ,footerController.updateFooter);
 
-router.post('/email', validate(formInputZodSchema), footerController.addEmail);
+router.post('/email', validate(formInputZodSchema), footerController.createEmail);
 
 export default router;

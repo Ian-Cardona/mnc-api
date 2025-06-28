@@ -243,14 +243,14 @@ describe('Footer Controller', () => {
     });
   });
 
-  describe('addEmail', () => {
+  describe('createEmail', () => {
     it('should add email successfully', async () => {
       const emailData = footerTestHelper.validEmailData;
 
       mockRequest.body = emailData;
       vi.mocked(footerService.addEmail).mockResolvedValue();
 
-      await footerController.addEmail(mockRequest as TypedRequestBody<IFooterFormInput>, mockResponse as Response, mockNext);
+      await footerController.createEmail(mockRequest as TypedRequestBody<IFooterFormInput>, mockResponse as Response, mockNext);
 
       expect(footerService.addEmail).toHaveBeenCalledWith(emailData);
       expect(mockResponse.status).toHaveBeenCalledWith(HTTP_STATUS.CREATED);
@@ -265,7 +265,7 @@ describe('Footer Controller', () => {
       mockRequest.body = emailData;
       vi.mocked(footerService.addEmail).mockRejectedValue(error);
 
-      await footerController.addEmail(mockRequest as TypedRequestBody<IFooterFormInput>, mockResponse as Response, mockNext);
+      await footerController.createEmail(mockRequest as TypedRequestBody<IFooterFormInput>, mockResponse as Response, mockNext);
 
       expect(footerService.addEmail).toHaveBeenCalledWith(emailData);
       expect(mockNext).toHaveBeenCalledWith(error);
@@ -282,7 +282,7 @@ describe('Footer Controller', () => {
 
       mockRequest.body = invalidEmailData;
 
-      await footerController.addEmail(mockRequest as TypedRequestBody<IFooterFormInput>, mockResponse as Response, mockNext);
+      await footerController.createEmail(mockRequest as TypedRequestBody<IFooterFormInput>, mockResponse as Response, mockNext);
 
       expect(footerService.addEmail).not.toHaveBeenCalled();
       expect(mockResponse.status).toHaveBeenCalledWith(HTTP_STATUS.BAD_REQUEST);
