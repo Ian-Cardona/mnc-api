@@ -5,7 +5,7 @@ import { navBarLinkSchema } from './navbar.model';
 
 export interface IFooterDocument extends IFooter, Document {}
 
-const formSchema = new Schema<IFooterForm>(
+const formDbSchema = new Schema<IFooterForm>(
   {
     header: { type: String, required: true },
     subheader: { type: String, required: true },
@@ -13,7 +13,7 @@ const formSchema = new Schema<IFooterForm>(
   { _id: false },
 );
 
-const socialSchema = new Schema<IFooterSocial>(
+const socialDbSchema = new Schema<IFooterSocial>(
   {
     platform: { type: String, required: true },
     url: { type: String, required: true },
@@ -21,7 +21,7 @@ const socialSchema = new Schema<IFooterSocial>(
   { _id: false },
 );
 
-const infoSchema = new Schema<IFooterInfo>(
+const infoDbSchema = new Schema<IFooterInfo>(
   {
     address: { type: String, required: true },
     contact: { type: String, required: true },
@@ -31,14 +31,14 @@ const infoSchema = new Schema<IFooterInfo>(
 );
 
 const footerDbSchema = new Schema<IFooterDocument>({
-  form: { type: formSchema, required: true },
-  socials: { type: [socialSchema], required: true },
-  info: { type: infoSchema, required: true },
+  form: { type: formDbSchema, required: true },
+  socials: { type: [socialDbSchema], required: true },
+  info: { type: infoDbSchema, required: true },
   copyright: { type: String, required: true },
   links: { type: [navBarLinkSchema], required: true },
 });
 
-const formInputSchema = new Schema<IFooterFormInput>(
+const formInputDbSchema = new Schema<IFooterFormInput>(
   {
     emailer: { type: String, required: true },
     contact: { type: String, required: true },
@@ -48,4 +48,4 @@ const formInputSchema = new Schema<IFooterFormInput>(
 );
 
 export const FooterModel = model<IFooterDocument>('Footer', footerDbSchema);
-export const FormInputModel = model<IFooterFormInput>('FormInput', formInputSchema);
+export const FormInputModel = model<IFooterFormInput>('FormInput', formInputDbSchema);

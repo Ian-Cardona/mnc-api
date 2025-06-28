@@ -6,6 +6,7 @@ import homeRouter from './routes/home.route';
 import footerRouter from './routes/footer.route';
 import navbarRouter from './routes/navbar.route';
 import aboutRouter from './routes/about.route';
+import servicesRouter from './routes/services.route';
 import { errorMiddleware } from './middleware/error.middleware';
 import { requestLogger } from './middleware/request_logger.middleware';
 import helmet from 'helmet';
@@ -25,6 +26,7 @@ app.use('/api/home', homeRouter);
 app.use('/api/footer', footerRouter);
 app.use('/api/navbar', navbarRouter);
 app.use('/api/about', aboutRouter);
+app.use('/api/services', servicesRouter);
 
 app.get('/api', (_req, res) => {
   res.send('API is running.');
