@@ -1,8 +1,8 @@
 import type { NextFunction, Request, Response } from 'express';
 import navbarService from '../services/navbar.service';
 import { ERROR_MESSAGES, HTTP_STATUS } from '../constants/http.constants';
-import type { TypedRequestBody } from '../types/request.types';
-import type { INavBar } from '../types/navbar.types';
+import type { TypedRequestBody } from '../types/request.type';
+import type { INavBar } from '../types/navbar.type';
 
 const fetchNavBar = async (_req: Request, res: Response, next: NextFunction) => {
   try {

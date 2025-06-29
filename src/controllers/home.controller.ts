@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from 'express';
 import homeService from '../services/home.service';
-import type { TypedRequestBody } from '../types/request.types';
-import type { IHome } from '../types/home.types';
+import type { TypedRequestBody } from '../types/request.type';
+import type { IHome } from '../types/home.type';
 import { ERROR_MESSAGES, HTTP_STATUS } from '../constants/http.constants';
 
 const fetchHome = async (_req: Request, res: Response, next: NextFunction) => {

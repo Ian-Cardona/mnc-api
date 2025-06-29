@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from 'express';
 import footerService from '../services/footer.service';
-import type { IFooter, IFooterFormInput } from '../types/footer.types';
-import type { TypedRequestBody } from '../types/request.types';
+import type { IFooter, IFooterFormInput } from '../types/footer.type';
+import type { TypedRequestBody } from '../types/request.type';
 import { ERROR_MESSAGES, HTTP_STATUS } from '../constants/http.constants';
 
 export const fetchFooter = async (_req: Request, res: Response, next: NextFunction) => {

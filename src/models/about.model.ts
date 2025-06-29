@@ -1,5 +1,5 @@
 import { Schema, model, type Document } from 'mongoose';
-import type { IAbout, IAboutApproach, IAboutHero, IAboutHighlight, IAboutStat, IAboutStory, IAboutTeamMember, IAboutValue } from '../types/about.types';
+import type { IAbout, IAboutApproach, IAboutHero, IAboutHighlight, IAboutStat, IAboutStory, IAboutTeamMember, IAboutValue } from '../types/about.type';
 
 export interface IAboutDocument extends IAbout, Document {}
 

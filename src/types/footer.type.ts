@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import type { INavBarLink } from './navbar.types';
+import type { INavBarLink } from './navbar.type';
 
-export const platformEnum = z.enum(['facebook', 'instagram', 'linkedin']);
+export const platformEnum = z.enum(['facebook', 'linkedin']);
 export type Platform = z.infer<typeof platformEnum>;
 
 export interface IFooterForm {

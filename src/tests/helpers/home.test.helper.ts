@@ -1,4 +1,4 @@
-import type { IHome } from '../../types/home.types';
+import type { IHome } from '../../types/home.type';
 
 const baseHomeData = {
   cta: 'Sample CTA',

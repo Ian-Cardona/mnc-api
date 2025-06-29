@@ -1,5 +1,5 @@
 import { NavBarModel } from '../models/navbar.model';
-import type { INavBar } from '../types/navbar.types';
+import type { INavBar } from '../types/navbar.type';
 
 const getNavBar = async (): Promise<INavBar | null> => {
   const navBar = await NavBarModel.findOne({});

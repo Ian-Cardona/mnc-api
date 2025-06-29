@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from 'express';
 import aboutService from '../services/about.service';
-import type { IAbout } from '../types/about.types';
-import type { TypedRequestBody } from '../types/request.types';
+import type { IAbout } from '../types/about.type';
+import type { TypedRequestBody } from '../types/request.type';
 import { ERROR_MESSAGES, HTTP_STATUS } from '../constants/http.constants';
 
 export const fetchAbout = async (_req: Request, res: Response, next: NextFunction) => {

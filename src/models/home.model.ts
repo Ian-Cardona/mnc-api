@@ -1,6 +1,6 @@
 import type { Document } from 'mongoose';
 import { Schema, model } from 'mongoose';
-import type { IHero, IHome, ITestimonial } from '../types/home.types';
+import type { IHero, IHome, ITestimonial } from '../types/home.type';
 
 export interface IHomeDocument extends IHome ,Document {};
 

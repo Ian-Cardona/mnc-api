@@ -1,5 +1,5 @@
 import { HomeModel } from '../models/home.model';
-import type { IHome } from '../types/home.types';
+import type { IHome } from '../types/home.type';
 
 const getHome = async (): Promise<IHome | null> => {
   const home = await HomeModel.findOne({});

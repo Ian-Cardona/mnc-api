@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { platformEnum } from '../types/footer.types';
+import { platformEnum } from '../types/footer.type';
 import { navbarLinkZodSchema } from './navbar.validation';
 
 export const socialZodSchema = z.object({
