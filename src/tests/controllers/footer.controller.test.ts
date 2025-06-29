@@ -4,8 +4,8 @@ import footerController from '../../controllers/footer.controller';
 import footerService from '../../services/footer.service';
 import footerTestHelper from '../helpers/footer.test.helper';
 import { HTTP_STATUS, ERROR_MESSAGES } from '../../constants/http.constants';
-import type { IFooter, IFooterFormInput } from '../../types/footer.types';
-import type { TypedRequestBody } from '../../types/request.types';
+import type { IFooter, IFooterFormInput } from '../../types/footer.type';
+import type { TypedRequestBody } from '../../types/request.type';
 
 // Mock the footer service
 vi.mock('../../services/footer.service');
@@ -139,7 +139,7 @@ describe('Footer Controller', () => {
   describe('updateFooter', () => {
     it('should update footer successfully', async () => {
       const updateData = {
-        copyright: '© 2026 MNC Bookkeeping Services PH',
+        copyright: '© 2026 MNC Bookkeeping Services',
         'info.email': 'newemail@mncbookkeeping.ph',
       };
       const updatedFooter = { ...footerTestHelper.validFooterData, ...updateData };

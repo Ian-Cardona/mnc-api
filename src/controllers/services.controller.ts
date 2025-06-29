@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
-import type { IServices } from '../types/services.types';
-import type { TypedRequestBody } from '../types/request.types';
+import type { IServices } from '../types/services.type';
+import type { TypedRequestBody } from '../types/request.type';
 import { ERROR_MESSAGES, HTTP_STATUS } from '../constants/http.constants';
 import servicesService from '../services/services.service';
 

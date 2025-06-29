@@ -88,7 +88,7 @@
 //   describe('updateFooter', () => {
 //     it('should update and return footer with partial data', async () => {
 //       const updateData = {
-//         copyright: '© 2026 MNC Bookkeeping Services PH',
+//         copyright: '© 2026 MNC Bookkeeping Services',
 //         'info.email': 'newemail@mncbookkeeping.ph',
 //       };
 //       const updatedFooter = {

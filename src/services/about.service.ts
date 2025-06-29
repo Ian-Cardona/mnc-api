@@ -1,5 +1,5 @@
 import { AboutModel } from '../models/about.model';
-import type { IAbout } from '../types/about.types';
+import type { IAbout } from '../types/about.type';
 
 const getAbout = async (): Promise<IAbout | null> => {
   const about = await AboutModel.findOne({});

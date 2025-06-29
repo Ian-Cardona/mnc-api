@@ -1,6 +1,6 @@
 
 import { ServicesModel } from '../models/services.model';
-import type { IServices } from '../types/services.types';
+import type { IServices } from '../types/services.type';
 
 const getServices = async (): Promise<IServices | null> => {
   const services = await ServicesModel.findOne({});

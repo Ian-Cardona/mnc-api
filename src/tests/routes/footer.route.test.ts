@@ -140,7 +140,7 @@ describe('Footer Routes', () => {
     it('should update footer successfully with valid data', async () => {
       const updateData = {
         ...footerTestHelper.validFooterData,
-        copyright: '© 2026 MNC Bookkeeping Services PH',
+        copyright: '© 2026 MNC Bookkeeping Services',
         info: {
           ...footerTestHelper.validFooterData.info,
           email: 'newemail@mncbookkeeping.ph',

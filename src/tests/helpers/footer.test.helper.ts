@@ -1,4 +1,4 @@
-import type { IFooter, IFooterFormInput } from '../../types/footer.types';
+import type { IFooter, IFooterFormInput } from '../../types/footer.type';
 
 const baseFooterData = {
   form: {
@@ -10,14 +10,13 @@ const baseFooterData = {
     contact: '+63 912 345 6789',
     email: 'info@mncbookkeeping.ph',
   },
-  copyright: '© 2025 MNC Bookkeeping Services PH',
+  copyright: '© 2025 MNC Bookkeeping Services',
 };
 
 const validFooterData: IFooter = {
   ...baseFooterData,
   socials: [
     { platform: 'facebook' as const, url: 'https://facebook.com/mnc' },
-    { platform: 'instagram' as const, url: 'https://instagram.com/mnc' },
     { platform: 'linkedin' as const, url: 'https://linkedin.com/company/mnc' },
   ],
   links: [

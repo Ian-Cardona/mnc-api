@@ -1,5 +1,5 @@
 import { FooterModel } from '../models/footer.model';
-import type { IFooter, IFooterFormInput } from '../types/footer.types';
+import type { IFooter, IFooterFormInput } from '../types/footer.type';
 import { sendEmail } from './email.service';
 
 const getFooter = async (): Promise<IFooter | null> => {

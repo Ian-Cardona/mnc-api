@@ -5,7 +5,8 @@ import { FooterModel } from '../models/footer.model';
 import { NavBarModel } from '../models/navbar.model';
 import { AboutModel } from '../models/about.model';
 import { ServicesModel } from '../models/services.model';
-import { platformEnum } from '../types/footer.types';
+import { ContactModel } from '../models/contact.model';
+import { platformEnum } from '../types/footer.type';
 
 dotenv.config();
 
@@ -127,12 +128,12 @@ const seedFooter = async () => {
     },
     socials: [
       { platform: platformEnum.enum.facebook, url: 'https://www.facebook.com/mncbsi' },
-      { platform: platformEnum.enum.instagram, url: 'https://instagram.com/mnc' },
       { platform: platformEnum.enum.linkedin, url: 'https://www.linkedin.com/in/mnc-bookkeeping-services-50419b371/' },
     ],
     links: [
-      { label: 'Services', path: '/services' },
-      { label: 'FAQs', path: '/faqs' },
+      { label: 'Services', path: '/services', external: false },
+      { label: 'Guides', path: '/guides', external: false },
+      { label: 'About', path: '/about', external: false },
       { label: 'Contact', path: '/contact', external: false },
     ],
     copyright: '© 2025 MNC Bookkeeping Services',
@@ -159,7 +160,7 @@ const seedAbout = async () => {
       ],
       highlight: {
         title: 'Established in 2019',
-        description: 'With almost ten years of experience and educational attainment, our founder decided to establish MNC Bookkeeping Services PH in August 2019.',
+        description: 'With almost ten years of experience and educational attainment, our founder decided to establish MNC Bookkeeping Services in August 2019.',
         icon: 'Target',
       },
     },
@@ -286,7 +287,7 @@ const seedServices = async () => {
   const services = new ServicesModel({
     hero: {
       title: 'Our Services',
-      subtitle: 'MNC Bookkeeping Services Inc. offers a complete package of services for the accounting and tax advisory needs of any entity.',
+      subtitle: 'MNC Bookkeeping Services offers a complete package of services for the accounting and tax advisory needs of any entity.',
       description: 'We implement a proactive approach by thoroughly reviewing, rather than just processing, all information we work with. Our experts are highly engaged in understanding the needs and requirements of our clients, ensuring efficient and straightforward communication regarding our services.',
       additionalInfo: 'Our excellence-focused team prioritizes maximum flexibility in meeting your requirements and expectations while saving your valuable time and effort.',
     },
@@ -349,7 +350,7 @@ const seedServices = async () => {
       },
       {
         title: 'Tax Return',
-        description: 'Every local organization and individual is required to declare their revenue (income) by submitting an annual tax return along with the respective applications and attachments. MNC Bookkeeping Services Inc. provides comprehensive services for the preparation and submission of tax returns for companies and individuals. We handle the entire process from collecting required documentation to computing your quarterly and annual returns and submitting them electronically on or before the due date.',
+        description: 'Every local organization and individual is required to declare their revenue (income) by submitting an annual tax return along with the respective applications and attachments. MNC Bookkeeping Services provides comprehensive services for the preparation and submission of tax returns for companies and individuals. We handle the entire process from collecting required documentation to computing your quarterly and annual returns and submitting them electronically on or before the due date.',
         icon: 'FileText',
         image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
         color: 'from-purple-500 via-purple-600 to-purple-700',
@@ -366,6 +367,34 @@ const seedServices = async () => {
   console.log('Services document seeded successfully.');
 };
 
+const seedContact = async () => {
+  await ContactModel.deleteMany({});
+  console.log('Existing Contact documents removed.');
+
+  const contact = new ContactModel({
+    hero: {
+      title: 'Get In Touch',
+      subtitle: 'Ready to start your journey with us? We\'re here to help you with all your bookkeeping and accounting needs.',
+    },
+    contactInfo: {
+      phone: '(02) 869-36325',
+      email: 'mnc.bookkeeping.servicesph@gmail.com',
+      address: 'No. 56 JB Santos Street, Wawa Tangos, South Navotas City, Philippines 1489',
+    },
+    socials: {
+      facebook: 'https://www.facebook.com/mncbsi',
+      linkedin: 'https://www.linkedin.com/in/mnc-bookkeeping-services-50419b371/',
+    },
+    businessHours: [
+      { day: 'Monday to Friday', hours: '8:00 AM - 5:00 PM' },
+      { day: 'Saturday and Sunday', hours: 'Closed' },
+    ],
+  });
+
+  await contact.save();
+  console.log('Contact document seeded successfully.');
+};
+
 const seed = async () => {
   try {
     if (!process.env.MONGODB_URI) {
@@ -379,6 +408,7 @@ const seed = async () => {
     await seedFooter();
     await seedAbout();
     await seedServices();
+    await seedContact();
 
   } catch (error) {
     console.error('Seeding failed:', error);

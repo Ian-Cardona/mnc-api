@@ -1,6 +1,6 @@
 import type { Document } from 'mongoose';
 import { Schema, model } from 'mongoose';
-import type { IFooter, IFooterForm, IFooterFormInput, IFooterInfo, IFooterSocial } from '../types/footer.types';
+import type { IFooter, IFooterForm, IFooterFormInput, IFooterInfo, IFooterSocial } from '../types/footer.type';
 import { navBarLinkSchema } from './navbar.model';
 
 export interface IFooterDocument extends IFooter, Document {}

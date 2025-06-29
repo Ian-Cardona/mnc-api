@@ -1,6 +1,6 @@
 import type { Document } from 'mongoose';
 import { Schema, model } from 'mongoose';
-import type { IServiceList, IServices, IServicesCTA, IServicesHero, IWhyChooseUsItem } from '../types/services.types';
+import type { IServiceList, IServices, IServicesCTA, IServicesHero, IWhyChooseUsItem } from '../types/services.type';
 
 export interface IServicesDocument extends IServices, Document {}
 

@@ -1,6 +1,6 @@
 import type { Document } from 'mongoose';
 import { Schema, model } from 'mongoose';
-import type { INavBar, INavBarLink, INavBarCTA } from '../types/navbar.types';
+import type { INavBar, INavBarLink, INavBarCTA } from '../types/navbar.type';
 
 export interface INavBarDocument extends INavBar, Document {}
 
