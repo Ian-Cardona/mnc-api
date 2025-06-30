@@ -6,6 +6,7 @@ import { NavBarModel } from '../models/navbar.model';
 import { AboutModel } from '../models/about.model';
 import { ServicesModel } from '../models/services.model';
 import { ContactModel } from '../models/contact.model';
+import { GuidesModel } from '../models/guides.model';
 import { platformEnum } from '../types/footer.type';
 
 dotenv.config();
@@ -395,6 +396,64 @@ const seedContact = async () => {
   console.log('Contact document seeded successfully.');
 };
 
+const seedGuides = async () => {
+  await GuidesModel.deleteMany({});
+  console.log('Existing Guides documents removed.');
+
+  const guides = new GuidesModel({
+    hero: {
+      title: 'Philippine BIR Forms Guide',
+      subtitle: 'Essential BIR forms for businesses and individuals in the Philippines. Download and learn about each form below.',
+    },
+    forms: [
+      {
+        name: 'BIR Form 1901',
+        url: 'https://www.bir.gov.ph/images/bir_files/downloadables/bir-files/BIR%20Form%20No.%201901%20Jan%202018%20ENCS.pdf',
+        description: 'Application for Registration for Self-Employed and Mixed Income Individuals, Estates/Trusts.',
+      },
+      {
+        name: 'BIR Form 1902',
+        url: 'https://www.bir.gov.ph/images/bir_files/downloadables/bir-files/BIR%20Form%20No.%201902%20Jan%202018%20ENCS.pdf',
+        description: 'Application for Registration for Individuals Earning Purely Compensation Income.',
+      },
+      {
+        name: 'BIR Form 1701',
+        url: 'https://www.bir.gov.ph/images/bir_files/downloadables/bir-files/BIR%20Form%20No.%201701%20Jan%202018%20ENCS.pdf',
+        description: 'Annual Income Tax Return for Individuals (including Mixed Income Earner, Estates and Trusts).',
+      },
+      {
+        name: 'BIR Form 1702',
+        url: 'https://www.bir.gov.ph/images/bir_files/downloadables/bir-files/BIR%20Form%20No.%201702%20Jan%202018%20ENCS.pdf',
+        description: 'Annual Income Tax Return for Corporations, Partnerships and Other Non-Individual Taxpayers.',
+      },
+      {
+        name: 'BIR Form 2551Q',
+        url: 'https://www.bir.gov.ph/images/bir_files/downloadables/bir-files/BIR%20Form%20No.%202551Q%20Jan%202018%20ENCS.pdf',
+        description: 'Quarterly Percentage Tax Return.',
+      },
+      {
+        name: 'BIR Form 0605',
+        url: 'https://www.bir.gov.ph/images/bir_files/downloadables/bir-files/BIR%20Form%20No.%200605%20Jan%202018%20ENCS.pdf',
+        description: 'Payment Form for taxes and fees that do not require a tax return.',
+      },
+      {
+        name: 'BIR Form 2307',
+        url: 'https://www.bir.gov.ph/images/bir_files/downloadables/bir-files/BIR%20Form%20No.%202307%20Jan%202018%20ENCS.pdf',
+        description: 'Certificate of Creditable Tax Withheld at Source.',
+      },
+      {
+        name: 'BIR Form 2316',
+        url: 'https://www.bir.gov.ph/images/bir_files/downloadables/bir-files/BIR%20Form%20No.%202316%20Jan%202018%20ENCS.pdf',
+        description: 'Certificate of Compensation Payment/Tax Withheld.',
+      },
+    ],
+    cta: 'For more forms and details, visit the official BIR website.',
+  });
+
+  await guides.save();
+  console.log('Guides document seeded successfully.');
+};
+
 const seed = async () => {
   try {
     if (!process.env.MONGODB_URI) {
@@ -409,6 +468,7 @@ const seed = async () => {
     await seedAbout();
     await seedServices();
     await seedContact();
+    await seedGuides();
 
   } catch (error) {
     console.error('Seeding failed:', error);

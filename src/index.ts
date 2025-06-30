@@ -6,6 +6,7 @@ import navbarRouter from './routes/navbar.route';
 import footerRouter from './routes/footer.route';
 import homeRouter from './routes/home.route';
 import servicesRouter from './routes/services.route';
+import guidesRouter from './routes/guides.route';
 import aboutRouter from './routes/about.route';
 import contactRouter from './routes/contact.route';
 import { errorMiddleware } from './middleware/error.middleware';
@@ -28,6 +29,7 @@ app.use('/api/navbar', navbarRouter);
 app.use('/api/footer', footerRouter);
 app.use('/api/home', homeRouter);
 app.use('/api/services', servicesRouter);
+app.use('/api/guides', guidesRouter);
 app.use('/api/about', aboutRouter);
 app.use('/api/contact', contactRouter);
 
