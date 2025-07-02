@@ -406,48 +406,24 @@ const seedGuides = async () => {
       subtitle: 'Essential BIR forms for businesses and individuals in the Philippines. Download and learn about each form below.',
     },
     forms: [
-      {
-        name: 'BIR Form 1901',
-        url: 'https://www.bir.gov.ph/images/bir_files/downloadables/bir-files/BIR%20Form%20No.%201901%20Jan%202018%20ENCS.pdf',
-        description: 'Application for Registration for Self-Employed and Mixed Income Individuals, Estates/Trusts.',
-      },
-      {
-        name: 'BIR Form 1902',
-        url: 'https://www.bir.gov.ph/images/bir_files/downloadables/bir-files/BIR%20Form%20No.%201902%20Jan%202018%20ENCS.pdf',
-        description: 'Application for Registration for Individuals Earning Purely Compensation Income.',
-      },
-      {
-        name: 'BIR Form 1701',
-        url: 'https://www.bir.gov.ph/images/bir_files/downloadables/bir-files/BIR%20Form%20No.%201701%20Jan%202018%20ENCS.pdf',
-        description: 'Annual Income Tax Return for Individuals (including Mixed Income Earner, Estates and Trusts).',
-      },
-      {
-        name: 'BIR Form 1702',
-        url: 'https://www.bir.gov.ph/images/bir_files/downloadables/bir-files/BIR%20Form%20No.%201702%20Jan%202018%20ENCS.pdf',
-        description: 'Annual Income Tax Return for Corporations, Partnerships and Other Non-Individual Taxpayers.',
-      },
-      {
-        name: 'BIR Form 2551Q',
-        url: 'https://www.bir.gov.ph/images/bir_files/downloadables/bir-files/BIR%20Form%20No.%202551Q%20Jan%202018%20ENCS.pdf',
-        description: 'Quarterly Percentage Tax Return.',
-      },
-      {
-        name: 'BIR Form 0605',
-        url: 'https://www.bir.gov.ph/images/bir_files/downloadables/bir-files/BIR%20Form%20No.%200605%20Jan%202018%20ENCS.pdf',
-        description: 'Payment Form for taxes and fees that do not require a tax return.',
-      },
-      {
-        name: 'BIR Form 2307',
-        url: 'https://www.bir.gov.ph/images/bir_files/downloadables/bir-files/BIR%20Form%20No.%202307%20Jan%202018%20ENCS.pdf',
-        description: 'Certificate of Creditable Tax Withheld at Source.',
-      },
-      {
-        name: 'BIR Form 2316',
-        url: 'https://www.bir.gov.ph/images/bir_files/downloadables/bir-files/BIR%20Form%20No.%202316%20Jan%202018%20ENCS.pdf',
-        description: 'Certificate of Compensation Payment/Tax Withheld.',
-      },
+      { name: 'BIR Form 1604-C', url: 'https://bir-cdn.bir.gov.ph/local/pdf/1604-C%20Jan%202018%20Final.pdf', description: 'Annual Information Return of Income Taxes Withheld on Compensation' },
+      //{ name: 'BIR Form 1619-F', url: '', description: 'Monthly Remittance Return of Final Income Taxes Withheld' },
+      //{ name: 'BIR Form 1619-E', url: '', description: 'Monthly Remittance Return of Creditable Income Taxes Withheld (Expanded)' },
+      { name: 'BIR Form 1601C', url: 'https://bir-cdn.bir.gov.ph/local/pdf/1601C%20final%20Jan%202018%20with%20DPA.pdf', description: 'Monthly Remittance Return of Income Taxes Withheld on Compensation' },
+      //{ name: 'BIR Form 1701A', url: '', description: 'Annual Income Tax Return for Individuals Earning Income PURELY from Business/Profession (those under the graduated income tax rates with OSD as mode of deduction or those who opted to avail of the 8% flat income tax rate)' },
+      //{ name: 'BIR Form 1701Q', url: '', description: 'Quarterly Income Tax Return for Individuals, Estates and Trusts' },
+      //{ name: 'BIR Form 1702-MX', url: '', description: 'Annual Income Tax Return for Corporation, Partnership and Other Non-Individual with MIXED Income Subject to Multiple Income Tax Rates or with Income Subject to SPECIAL/PREFERENTIAL RATE' },
+      //{ name: 'BIR Form 1702-EX', url: '', description: 'Annual Income Tax Return for Use ONLY by Corporation, Partnership and Other Non-Individual Taxpayer EXEMPT under the Tax Code, as amended, (Sec. 30 and those exempted in Sec. 27(C) and other special laws, with NO other taxable income)' },
+      //{ name: 'BIR Form 1700', url: '', description: 'Annual Income Tax Return for Individuals Earning Purely Compensation Income (including Non-Business/Non-Profession Income)' },
+      //{ name: 'BIR Form 1701-MS', url: '', description: 'Annual Income Tax Return for Individuals Earning Mixed Income/Multiple Sources' },
+      //{ name: 'BIR Form 1702-RT', url: '', description: 'Annual Income Tax Return for Corporation, Partnership and Other Non-Individual Taxpayer Subject Only to REGULAR Income Tax Rate' },
+      //{ name: 'BIR Form 1702Q', url: '', description: 'Quarterly Income Tax Return for Corporations, Partnerships and Other Non-Individual Taxpayers' },
+      //{ name: 'BIR Form 1601-EQ', url: '', description: 'Quarterly Remittance Return of Creditable Income Taxes Withheld (Expanded)' },
+      { name: 'BIR Form 1601-FQ', url: 'https://bir-cdn.bir.gov.ph/local/pdf/1601-FQ%202020%20final.pdf', description: 'Quarterly Remittance Return of Final Income Taxes Withheld' },
+      //{ name: 'BIR Form 2550Q', url: '', description: 'Quarterly Value-Added Tax Return' },
+      //{ name: 'BIR Form 2551M', url: '', description: 'Monthly Percentage Tax Return' },
     ],
-    cta: 'For more forms and details, visit the official BIR website.',
+    cta: 'Contact us if you need assistance with any BIR forms or have questions about tax requirements.',
   });
 
   await guides.save();
